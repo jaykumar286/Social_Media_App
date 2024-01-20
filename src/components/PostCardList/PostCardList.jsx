@@ -11,12 +11,12 @@ export default function PostCardList() {
                 'app-id': import.meta.env.VITE_APP_ID
             }
         })
-        .then((res) => setPostList(...[res.data.data]))
+        .then((res) => setPostList(res.data.data))
     },[]);
 
     return (
         (postList.length === 0)
-          ? "loading..."
+          ? "loading posts ..."
           : postList.map((post) => (
               <PostCard
                 key={post.id}
