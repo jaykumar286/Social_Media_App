@@ -6,12 +6,12 @@ import UserList from '../UserList/UserList';
 
 export default function MainContainer() {
   return (
-    <Box sx={{ width: '100%' , mt:'3rem' }} display="flex" justifyContent="center">
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}  justifyContent="space-between" alignItems="start">
-        <Grid md={6}>
+    <Box container sx={{mt:'3rem' }} >
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 4 }}  justifyContent="center" alignItems="start">
+        <Grid>
           <UserList/>
         </Grid>
-        <Grid container md={6} direction="column" justifyContent="center" alignItems="center">
+        <Grid container md={8} direction="column" justifyContent="center" alignItems="center">
           <PostCardList/>
         </Grid>
       </Grid>

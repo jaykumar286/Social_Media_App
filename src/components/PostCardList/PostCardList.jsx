@@ -1,9 +1,10 @@
-import { useEffect,useState } from "react"
+import { useEffect,useContext } from "react"
 import PostCard from "../PostCard"
 import axios from "axios";
+import PostsContext from "../../providers/PostsContext";
 
 export default function PostCardList() {
-    const [postList,setPostList] = useState([]);
+    const {postList,setPostList} = useContext(PostsContext);
 
     useEffect(()=>{
         axios.get('https://dummyapi.io/data/v1/post', {
@@ -12,7 +13,7 @@ export default function PostCardList() {
             }
         })
         .then((res) => setPostList(res.data.data))
-    },[]);
+    },[postList]);
 
     return (
         (postList.length === 0)
@@ -20,7 +21,7 @@ export default function PostCardList() {
           : postList.map((post) => (
               <PostCard
                 key={post.id}
-                authorFirstName={post.owner.firstName.substring(0, 1)}
+                authorFirstName={post.owner.firstName}
                 image={post.image}
                 content={post.text}
               />
